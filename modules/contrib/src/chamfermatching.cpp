@@ -243,16 +243,7 @@ private:
 
         ~Matching()
         {
-            for (size_t i = 0; i<templates.size(); i++) {
-                delete templates[i];
-            }
         }
-
-        /**
-         * Add a template to the detector from an edge image.
-         * @param templ An edge image
-         */
-        void addTemplateFromImage(Mat& templ, float scale = 1.0);
 
         /**
          * Run matching using an edge image.
@@ -932,15 +923,6 @@ void ChamferMatcher::Template::show() const
 
 
 //////////////////////// Matching /////////////////////////////////////
-
-
-void ChamferMatcher::Matching::addTemplateFromImage(Mat& templ, float scale)
-{
-    Template* cmt = new Template(templ, scale);
-    templates.clear();
-    templates.push_back(cmt);
-    cmt->show();
-}
 
 void ChamferMatcher::Matching::addTemplate(Template& template_){
     templates.clear();
